@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoe Store</title>
+  <link rel="stylesheet" href="/templates/style.css">
+</head>
+<body>
+<header>
+  <nav id="nav">
+
+    <div class="navTop">
+      <div class="navItem">
+        <h1>Solemates</h1>
+      </div>
+      <div class="navItem">
+        <h1>
+          Solemates is brand that would be solemate for your soles.
+        </h1>
+      </div>
+      <div class="regist">
+        <a href="/" style="padding-right:20px; color:white">Home</a>
+        <a href="/loginuser" style="padding-right:20px; color:white">Login</a>
+        <a href="/register" style="padding-right:20px; color:white">Register</a>
+
+
+      </div>
+
+    </div>
+  </nav>
+</header>
+
+<main>
+  <h1>All Shoes</h1>
+
+  <h2>Place an Order</h2>
+  <form id="orderForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="shoeId">Shoe ID:</label>
+    <input type="text" id="shoeId" name="shoeId" required>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" required>
+
+    <button type="submit">Place Order</button>
+  </form>
+  <div id="shoeList" class="gallery"></div>
+
+</main>
+
+<script src="/templates/script.js"></script>
+</body>
+</html>

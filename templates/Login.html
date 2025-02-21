@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/templates/login.css">
+  <title>Login</title>
+</head>
+
+<body>
+<div class="regist">
+  <a href="index.html" style="padding-right:20px; color:white">Home</a>
+  <a href="register.html" style="color:white">Register</a>
+</div>
+
+<div class="login">
+  <div class="login_title">
+    <span>Login to your account</span>
+  </div>
+  <div class="login_fields">
+    <div class="login_fields__user">
+      <div class="icon"></div>
+      <input id="username" placeholder="Username or Email" type="text">
+      <div class="validation"></div>
+    </div>
+    <div class="login_fields__password">
+      <div class="icon"></div>
+      <input id="password" placeholder="Password" type="password">
+    </div>
+    <div class="login_fields__submit">
+      <input id="loginButton" type="submit" value="Log In">
+    </div>
+  </div>
+  <div id="message" class="success" style="display: none;">
+    <h2>Authentication Success</h2>
+    <p>Welcome back</p>
+  </div>
+</div>
+
+<script src="/templates/login.js"></script>
+</body>
+
+</html>

@@ -30,7 +30,10 @@ func CreateOrderHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	_, err = db.UserCol.UpdateOne(db.Ctx, bson.M{"id": order.UserID}, bson.M{"$push": bson.M{"order_ids": order.ID}})
+	filter := bson.M{"id": order.UserID}
+	update := bson.M{"$push": bson.M{"order_ids": order.ID}}
+
+	_, err = db.UserCol.UpdateOne(db.Ctx, filter, update)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -66,4 +69,49 @@ func GetOrdersByUserID(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(orders)
+}
+
+func CreateOrderForUserByUsername(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Only POST method is supported.", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var request struct {
+		Username string       `json:"username"`
+		Order    models.Order `json:"order"`
+	}
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	var user models.User
+	err = db.UserCol.FindOne(db.Ctx, bson.M{"username": request.Username}).Decode(&user)
+	if err != nil {
+		http.Error(w, "User not found.", http.StatusNotFound)
+		return
+	}
+
+	request.Order.UserID = user.ID
+	request.Order.ID = generateID()
+
+	_, err = db.OrderCol.InsertOne(db.Ctx, request.Order)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	filter := bson.M{"id": user.ID}
+	update := bson.M{"$push": bson.M{"order_ids": request.Order.ID}}
+
+	_, err = db.UserCol.UpdateOne(db.Ctx, filter, update)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(request.Order)
 }
