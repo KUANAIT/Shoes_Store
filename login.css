@@ -1,0 +1,131 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.regist {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.regist a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.regist a:hover {
+    color: #007bff;
+}
+
+.login {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login_title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login_fields__user,
+.login_fields__password {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login_fields__user input,
+.login_fields__password input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.login_fields__user input:focus,
+.login_fields__password input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.login_fields__submit input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login_fields__submit input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.forgot a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot a:hover {
+    text-decoration: underline;
+}
+
+.success {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    color: #155724;
+}
+
+.success h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.success p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+.error {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    color: #721c24;
+}
+
+.error h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.error p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
